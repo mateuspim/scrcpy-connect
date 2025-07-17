@@ -18,19 +18,14 @@ def main():
     parser.add_argument(
         "--port", type=int, default=5555, help="Port number (default: 5555)"
     )
-    parser.add_argument(
-        "scrcpy_args",
-        nargs=argparse.REMAINDER,
-        help="Additional arguments to pass to scrcpy",
-    )
-    args = parser.parse_args()
+    args, scrcpy_args = parser.parse_known_args()
 
     setup_logging(args.log_level)
     logger = logging.getLogger(__name__)
     logger.info("Starting scrcpy-connect CLI")
 
     connect_and_mirror_device(
-        device_ip=args.ip, device_port=args.port, scrcpy_args=args.scrcpy_args
+        device_ip=args.ip, device_port=args.port, scrcpy_args=scrcpy_args
     )
 
 
