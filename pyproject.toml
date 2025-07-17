@@ -1,0 +1,8 @@
+[project]
+name = "scrcpy-connect"
+version = "0.1.0"
+description = "A Python tool to connect Android devices over WiFi using ADB and mirror their screens with scrcpy."
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = []
+authors = [{ name = "Mateus Pim", email = "mateuspimsantos@gmail.com" }]
