@@ -29,6 +29,10 @@ def main():
     logger = logging.getLogger(__name__)
     logger.info("Starting scrcpy-connect CLI")
 
+    connect_and_mirror_device(
+        device_ip=args.ip, device_port=args.port, scrcpy_args=args.scrcpy_args
+    )
+
 
 if __name__ == "__main__":
     main()
