@@ -36,7 +36,7 @@ scrcpy-connect <device_ip_address>
 Or, if you want to use additional scrcpy options:
 
 ```bash
-scrcpy-connect <device_ip_address> --no-video-playback --bit-rate 2M
+scrcpy-connect <device_ip_address> --video-codec=h265 --max-size=1920 --max-fps=60 --no-audio --keyboard=uhid
 ```
 
 If you omit the IP address, the tool will try to automatically connect a USB device to WiFi if possible.
