@@ -6,3 +6,4 @@ readme = "README.md"
 requires-python = ">=3.9"
 dependencies = []
 authors = [{ name = "Mateus Pim", email = "mateuspimsantos@gmail.com" }]
+license = "MIT"
