@@ -16,6 +16,7 @@ def connect_and_mirror_device(
     device_ip: Optional[str] = None,
     device_port: Optional[int] = None,
     scrcpy_args: Optional[List[str]] = None,
+    retries: int = 3,
 ) -> None:
     """
     Connects to the Android device via ADB, checks connection, and runs scrcpy.
@@ -83,11 +84,13 @@ def connect_and_mirror_device(
                 logger.error(f"Error connecting over Wi-Fi: {str(err)}")
                 return
 
-    logger.info("Device connected over WIFI")
-    logger.info(f"Starting SCRCPY with args: -s {device_ip} {' '.join(scrcpy_args)}")
-    out, err = run_command("scrcpy", "-s", str(device_ip), *scrcpy_args)
-    if out:
-        logger.info(f"SCRCPY output: {out}")
-    if err:
-        logger.error(f"SCRCPY error: {err}")
-    logger.info(f"Stopped running SCRCPY with {out} {err}")
+    num_tries = 0
+    while num_tries < retries:
+        logger.info("Device connected over WIFI")
+        logger.info(f"Starting SCRCPY with args: -s {device_ip} {' '.join(scrcpy_args)}")
+        out, err = run_command("scrcpy", "-s", str(device_ip), *scrcpy_args)
+        if out:
+            logger.info(f"SCRCPY output: {out}")
+        if err:
+            logger.error(f"SCRCPY error: {err}")
+        logger.info(f"Stopped running SCRCPY with {out} {err}")
