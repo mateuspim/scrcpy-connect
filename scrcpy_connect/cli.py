@@ -18,6 +18,9 @@ def main():
     parser.add_argument(
         "--port", type=int, default=5555, help="Port number (default: 5555)"
     )
+    parser.add_argument(
+        "--retries", type=int, default=3, help="SCRCPY connection retries (default: 3)"
+    )
     args, scrcpy_args = parser.parse_known_args()
 
     setup_logging(args.log_level)
@@ -25,7 +28,7 @@ def main():
     logger.info("Starting scrcpy-connect CLI")
 
     connect_and_mirror_device(
-        device_ip=args.ip, device_port=args.port, scrcpy_args=scrcpy_args
+        device_ip=args.ip, device_port=args.port, scrcpy_args=scrcpy_args, retries=args.retries
     )
 
 
