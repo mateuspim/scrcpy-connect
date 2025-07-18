@@ -13,10 +13,10 @@ logger = logging.getLogger(__name__)
 
 
 def connect_and_mirror_device(
+    retries: int,
     device_ip: Optional[str] = None,
     device_port: Optional[int] = None,
     scrcpy_args: Optional[List[str]] = None,
-    retries: int = 3,
 ) -> None:
     """
     Connects to the Android device via ADB, checks connection, and runs scrcpy.
