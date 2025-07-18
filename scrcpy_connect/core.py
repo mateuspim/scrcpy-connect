@@ -1,3 +1,4 @@
+import time
 from typing import Optional, List
 from scrcpy_connect.utils import (
     run_command,
@@ -97,3 +98,4 @@ def connect_and_mirror_device(
         if err:
             logger.error(f"SCRCPY error: {err}")
         logger.info(f"Stopped running SCRCPY with {out} {err}")
+        time.sleep(1)
