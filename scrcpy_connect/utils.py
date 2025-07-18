@@ -43,6 +43,9 @@ def run_command(name: str, *args: str) -> Tuple[str, str]:
 def is_device_connected() -> Tuple[bool, str]:
     out, err = run_command("adb", "devices")
     if err:
+        if "daemon not running" in err:
+            logger.debug("ADB server not initilized, re-checking device connection")
+            return is_device_connected()
         logger.error("Can't check if a device is connected")
         return False, ""
 
