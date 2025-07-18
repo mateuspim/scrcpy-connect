@@ -27,9 +27,17 @@ def main():
     logger = logging.getLogger(__name__)
     logger.info("Starting scrcpy-connect CLI")
 
-    connect_and_mirror_device(
-        device_ip=args.ip, device_port=args.port, scrcpy_args=scrcpy_args, retries=args.retries
-    )
+    try:
+        connect_and_mirror_device(
+            device_ip=args.ip,
+            device_port=args.port,
+            scrcpy_args=scrcpy_args,
+            retries=args.retries,
+        )
+    except KeyboardInterrupt as e:
+        logger.info("Exiting program via CTRL + C")
+    except Exception as e:
+        logger.error(f"Error while trying to mirror device screen: {e}")
 
 
 if __name__ == "__main__":
