@@ -30,7 +30,7 @@ def connect_and_mirror_device(
     ip_only = device_ip.split(":")[0] if device_ip else ""
 
     if is_valid_ip(ip=ip_only) and ":" not in device_ip:
-            device_ip = f"{ip_only}:{device_port}"
+        device_ip = f"{ip_only}:{device_port}"
     elif not device_ip or ":" not in device_ip or not is_valid_ip(ip=ip_only):
         logger.info("Checking if device is connected")
         connected, device_ip = is_device_connected()
@@ -86,8 +86,11 @@ def connect_and_mirror_device(
 
     num_tries = 0
     while num_tries < retries:
+        num_tries += 1
         logger.info("Device connected over WIFI")
-        logger.info(f"Starting SCRCPY with args: -s {device_ip} {' '.join(scrcpy_args)}")
+        logger.info(
+            f"Starting SCRCPY with args: -s {device_ip} {' '.join(scrcpy_args)}"
+        )
         out, err = run_command("scrcpy", "-s", str(device_ip), *scrcpy_args)
         if out:
             logger.info(f"SCRCPY output: {out}")
