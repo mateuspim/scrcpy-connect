@@ -1,5 +1,7 @@
 # scrcpy-connect
 
+**Using Omarchy?** [OmaDroid](https://github.com/mateuspim/omadroid) brings device discovery, wireless pairing, mirroring, audio, and webcam sessions into the Omarchy bar. This repository remains the standalone Python CLI.
+
 **scrcpy-connect** is a Python tool that helps you connect Android devices to your computer over WiFi using ADB, and then mirror and control their screens with [scrcpy](https://github.com/Genymobile/scrcpy).
 
 ## Features
